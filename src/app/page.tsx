@@ -19,12 +19,10 @@ interface Movie {
 export default async function Home() {
   const queryClient = new QueryClient();
   return (
-    <div className="bg-slate-500">
-      <div>
-        <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <div className="bg-slate-500 w-full h-screen flex justify-center items-center">
           <Main />
-         </QueryClientProvider>
-       </div>
-    </div>
+      </div>
+    </QueryClientProvider>
   );
 }
