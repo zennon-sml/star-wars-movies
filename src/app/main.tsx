@@ -2,6 +2,13 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { FC } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface MainProps {}
 
@@ -35,16 +42,25 @@ const Main: FC<MainProps> = () => {
   // Access the first movie object
 
   return (
-    <div className="flex grid grid-cols-3">
-      {data.Search.map((movie: Movie) => (
-        <div key={movie.imdbID}>
-          <h2>{movie.Title}</h2>
-          <p>Year: {movie.Year}</p>
-          <p>IMDB ID: {movie.imdbID}</p>
-          <p>Type: {movie.Type}</p>
-          <img className="w-40" src={movie.Poster} alt={movie.Title} />
-        </div>
-      ))}
+    <div className="mx-auto max-w-6xl ny-12 space-y-6 px-5">
+      <Carousel>
+        <CarouselContent>
+          {data.Search.map((movie: Movie) => (
+            <CarouselItem
+              key={movie.imdbID}
+              className="inset-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <h2>{movie.Title}</h2>
+              <p>Year: {movie.Year}</p>
+              <p>IMDB ID: {movie.imdbID}</p>
+              <p>Type: {movie.Type}</p>
+              <img className="w-40" src={movie.Poster} alt={movie.Title} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </div>
   );
 };
