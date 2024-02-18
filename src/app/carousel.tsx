@@ -9,18 +9,13 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import CardMovie from "./cardmovie";
 
 interface MainProps {}
 
-interface Movie {
-  Title: string;
-  Year: string;
-  imdbID: string;
-  Type: string;
-  Poster: string;
-}
 
-const Main: FC<MainProps> = () => {
+
+const CarouselMovies: FC<MainProps> = () => {
   const { data, error, isLoading } = useQuery({
     queryKey: ["mydata"],
     queryFn: async () => {
@@ -42,17 +37,15 @@ const Main: FC<MainProps> = () => {
   // Access the first movie object
 
   return (
-    <div className="w-1/2 h-1/2 outline grid place-items-center ">
+    <div className="w-1/2 grid outline-none place-items-center ">
       <div>
-        <Carousel className="">
-          <CarouselContent >
+        <Carousel className="w-80 place-items-center align-middle">
+          <CarouselContent className="">
             {data.Search.map((movie: Movie) => (
               <CarouselItem key={movie.imdbID}>
-                <h2>{movie.Title}</h2>
-                <p>Year: {movie.Year}</p>
-                <p>IMDB ID: {movie.imdbID}</p>
-                <p>Type: {movie.Type}</p>
-                <img className="w-40" src={movie.Poster} alt={movie.Title} />
+                <CardMovie title={movie.Title} year={movie.Year} img={movie.Poster}/>
+                {/* <p>IMDB ID: {movie.imdbID}</p>
+                <p>Type: {movie.Type}</p> */}
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -64,4 +57,4 @@ const Main: FC<MainProps> = () => {
   );
 };
 
-export default Main;
+export default CarouselMovies;

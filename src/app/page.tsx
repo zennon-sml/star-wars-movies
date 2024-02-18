@@ -1,6 +1,6 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Main from "./main";
+import CarouselMovies from "./carousel";
 
 interface MoviesResponse {
   Search: Movie[];
@@ -21,7 +21,7 @@ export default async function Home() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="bg-slate-500 w-full h-screen flex justify-center items-center">
-          <Main />
+        <CarouselMovies />
       </div>
     </QueryClientProvider>
   );
