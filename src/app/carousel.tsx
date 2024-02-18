@@ -10,8 +10,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import CardMovie from "./cardmovie";
-import bg from "../../public/stars.jpg";
-import Image from "next/image";
+import Movie from "@/types/movie";
 
 interface MainProps {}
 
@@ -43,10 +42,7 @@ const CarouselMovies: FC<MainProps> = () => {
           <CarouselContent className="">
             {data.Search.map((movie: Movie) => (
               <CarouselItem key={movie.imdbID}>
-                <CardMovie
-                  title={movie.Title}
-                  year={movie.Year}
-                  img={movie.Poster}
+                <CardMovie movie={movie}
                 />
                 {/* <p>IMDB ID: {movie.imdbID}</p>
                 <p>Type: {movie.Type}</p> */}

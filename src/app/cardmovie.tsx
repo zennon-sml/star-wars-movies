@@ -6,18 +6,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import Movie from "@/types/movie";
 
 
-
-const CardMovie = ({title, year, img}) => {
+const CardMovie = ({movie}: {movie: Movie}) => {
   return (
       <Card className="w-80 grid place-items-center bg-slate-800 border-0 outline-none overflow-hidden">
         <CardHeader>
-          <CardTitle className="text-slate-50">{title}</CardTitle>
-          <CardDescription className="text-slate-400">Year {year}</CardDescription>
+          <CardTitle className="text-slate-50">{movie.Title}</CardTitle>
+          <CardDescription className="text-slate-400">Year {movie.Year}</CardDescription>
         </CardHeader>
         <CardContent className="">
-          <img src={img} className="w-72" />
+          <img src={movie.Poster} className="w-72" />
         </CardContent>
       </Card>
   );

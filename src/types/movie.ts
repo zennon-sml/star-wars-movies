@@ -4,5 +4,6 @@ interface Movie {
     imdbID: string;
     Type: string;
     Poster: string;
-  }
-  
+}
+
+export default Movie
