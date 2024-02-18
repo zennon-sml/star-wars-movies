@@ -10,10 +10,10 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import CardMovie from "./cardmovie";
+import bg from "../../public/stars.jpg";
+import Image from "next/image";
 
 interface MainProps {}
-
-
 
 const CarouselMovies: FC<MainProps> = () => {
   const { data, error, isLoading } = useQuery({
@@ -37,13 +37,17 @@ const CarouselMovies: FC<MainProps> = () => {
   // Access the first movie object
 
   return (
-    <div className="w-1/2 grid outline-none place-items-center ">
-      <div>
-        <Carousel className="w-80 place-items-center align-middle">
+    <div className="grid place-items-center">
+      <div className="">
+        <Carousel className="w-80 place-items-center align-middle ">
           <CarouselContent className="">
             {data.Search.map((movie: Movie) => (
               <CarouselItem key={movie.imdbID}>
-                <CardMovie title={movie.Title} year={movie.Year} img={movie.Poster}/>
+                <CardMovie
+                  title={movie.Title}
+                  year={movie.Year}
+                  img={movie.Poster}
+                />
                 {/* <p>IMDB ID: {movie.imdbID}</p>
                 <p>Type: {movie.Type}</p> */}
               </CarouselItem>

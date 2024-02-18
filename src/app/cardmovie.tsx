@@ -11,17 +11,15 @@ import {
 
 const CardMovie = ({title, year, img}) => {
   return (
-    <div>
-      <Card className="w-80  grid place-items-center bg-slate-700 overflow-hidden">
+      <Card className="w-80 grid place-items-center bg-slate-800 border-0 outline-none overflow-hidden">
         <CardHeader>
-          <CardTitle>{title}</CardTitle>
-          <CardDescription>Year {year}</CardDescription>
+          <CardTitle className="text-slate-50">{title}</CardTitle>
+          <CardDescription className="text-slate-400">Year {year}</CardDescription>
         </CardHeader>
-        <CardContent className="w-52">
-          <img src={img} />
+        <CardContent className="">
+          <img src={img} className="w-72" />
         </CardContent>
       </Card>
-    </div>
   );
 };
 
