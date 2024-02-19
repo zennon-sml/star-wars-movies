@@ -3,6 +3,18 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CarouselMovies from "./carousel";
 import Image from "next/image";
 
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
+
+
 interface MoviesResponse {
   Search: Movie[];
   Response: string;
@@ -23,7 +35,17 @@ export default async function Home() {
     <QueryClientProvider client={queryClient}>
       <div className="w-full h-screen bg-slate-900 flex flex-col justify-center items-center gap-4">
       <div className="w-full bg-slate-950 h-24 flex flex-col items-center justify-center">
-        <h1 className="text-2xl font-bold text-white">Star Wars</h1>
+      <NavigationMenu>
+  <NavigationMenuList>
+    <NavigationMenuItem>
+      <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
+      <NavigationMenuContent>
+        <NavigationMenuLink>Link</NavigationMenuLink>
+      </NavigationMenuContent>
+    </NavigationMenuItem>
+  </NavigationMenuList>
+</NavigationMenu>
+
       </div>
       <div>
         <CarouselMovies />

@@ -19,14 +19,14 @@ const CarouselMovies: FC<MainProps> = () => {
     queryKey: ["mydata"],
     queryFn: async () => {
       const response = await axios.get(
-        "https://www.omdbapi.com/?apikey=6a10f4a2&s=Star%20Wars"
+        "https://api.themoviedb.org/3/search/movie?api_key=9b6ea262cead427dd28fc0d5a6de8c61&query=Star%20Wars&with_keywords=Star%20Wars%20Saga"
       );
       return response.data; // Return the parsed JSON data directly
     },
   });
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div className="text-slate-50">Loading...</div>;
   }
 
   if (error) {
@@ -39,13 +39,10 @@ const CarouselMovies: FC<MainProps> = () => {
     <div className="grid place-items-center">
       <div className="">
         <Carousel className="w-80 place-items-center align-middle ">
-          <CarouselContent className="">
-            {data.Search.map((movie: Movie) => (
-              <CarouselItem key={movie.imdbID}>
-                <CardMovie movie={movie}
-                />
-                {/* <p>IMDB ID: {movie.imdbID}</p>
-                <p>Type: {movie.Type}</p> */}
+          <CarouselContent className="text-slate-50">
+            {data.results.map((movie: Movie) => (
+              <CarouselItem >
+                <CardMovie movie={movie}/> 
               </CarouselItem>
             ))}
           </CarouselContent>
