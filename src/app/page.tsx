@@ -1,7 +1,7 @@
 "use client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import CarouselMovies from "./carousel";
-import { Star } from "lucide-react";
+import { Github, Star } from "lucide-react";
 import Image from "next/image";
 
 import {
@@ -13,8 +13,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
-
+} from "@/components/ui/navigation-menu";
 
 interface MoviesResponse {
   Search: Movie[];
@@ -35,14 +34,24 @@ export default async function Home() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="w-full h-screen bg-slate-900 flex flex-col justify-center items-center gap-4">
-      <div className="w-full bg-slate-950 h-24 flex flex-row items-center justify-center text-slate-50 text-xl">
-      <Star className="text-yellow-300"/>
-      <h1>Star Wars </h1>
-      <Star className="text-yellow-300"/>
-      </div>
-      <div>
-        <CarouselMovies />
-      </div>
+        <div className="w-full bg-slate-950 h-24 font-bold flex flex-row items-center justify-center text-slate-50 text-xl">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem className="flex">
+                <Star className="text-yellow-300" />
+                <h1>Star Wars </h1>
+                <Star className="text-yellow-300" />
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Github/>
+                Github
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+        <div>
+          <CarouselMovies />
+        </div>
       </div>
     </QueryClientProvider>
   );
