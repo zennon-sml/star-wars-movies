@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import CardMovie from "./cardmovie";
 import Movie from "@/types/movie";
+import { Skeleton } from "@/components/ui/skeleton";
 
 interface MainProps {}
 
@@ -26,7 +27,11 @@ const CarouselMovies: FC<MainProps> = () => {
   });
 
   if (!data) {
-    return <div className="text-slate-50">Loading...</div>;
+    return (
+      <div className="text-slate-50">
+        <Skeleton className="w-[320px] h-[530px] rounded-sm" />
+      </div>
+    );
   }
 
   if (error) {
@@ -41,8 +46,8 @@ const CarouselMovies: FC<MainProps> = () => {
         <Carousel className="w-80 place-items-center align-middle ">
           <CarouselContent className="text-slate-50">
             {data.results.map((movie: Movie) => (
-              <CarouselItem >
-                <CardMovie movie={movie}/> 
+              <CarouselItem key={movie.title}>
+                <CardMovie movie={movie} />
               </CarouselItem>
             ))}
           </CarouselContent>
